@@ -1,0 +1,60 @@
+{% extends 'base.html.twig'%}
+
+{% block main %}
+
+    <div style="text-align:center">
+        <h1 class="h3 mb-3 font-weight-normal">Registration</h1>
+
+
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            {{form_start(registerForm)}}
+
+
+            <div class="group">
+                {{form_widget(registerForm.username)}}
+            </div>
+
+            <div class="group">
+                {{form_widget(registerForm.firstName)}}
+            </div>
+            <div class="group">
+                {{form_widget(registerForm.lastName)}}
+            </div>
+            <div class="group">
+                {{form_widget(registerForm.email.first)}}
+            </div>
+            <div class="group">
+                {{form_widget(registerForm.email.second)}}
+            </div>
+            <div class="group">
+                {{form_widget(registerForm.password.first)}}
+            </div>
+            <div class="group">
+                {{form_widget(registerForm.password.second)}}
+            </div>
+
+
+            <button class="btn btn-lg btn-primary" type="submit">Register</button>
+            <button class="btn btn-lg btn-danger" type="reset">Cancel</button>
+
+            {{form_end(registerForm)}}
+        </div>
+
+        <div class="errorform" style="text-align: left; color: #FF9205; font-weight: bold">
+            {{ form_errors(registerForm.username) }}
+            {{ form_errors(registerForm.lastName) }}
+            {{ form_errors(registerForm.firstName) }}
+            {{ form_errors(registerForm.email.first) }}
+            {{ form_errors(registerForm.email.second) }}
+            {{ form_errors(registerForm.password.first) }}
+            {{ form_errors(registerForm.password.second) }}
+        </div>
+
+        <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <p>Click <a href="{{ path('login')}}" class="lien">here</a> to log in.</p>
+        </div>
+    </div>
+
+{%  endblock %}
+
+{% block title %}Register{% endblock %}

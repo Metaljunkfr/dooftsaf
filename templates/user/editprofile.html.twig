@@ -1,0 +1,57 @@
+{% extends 'base.html.twig'%}
+
+{% block main %}
+
+    <div style="text-align:center">
+        <h1 class="h3 mb-3 font-weight-normal">Edit your profile</h1>
+
+
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            {{form_start(editForm)}}
+
+
+            <div class="group">
+                {{form_widget(editForm.username)}}
+            </div>
+
+            <div class="group">
+                {{form_widget(editForm.firstName)}}
+            </div>
+            <div class="group">
+                {{form_widget(editForm.lastName)}}
+            </div>
+            <div class="group">
+                {{form_widget(editForm.email.first)}}
+            </div>
+            <div class="group">
+                {{form_widget(editForm.email.second)}}
+            </div>
+            <div class="group">
+                {{form_widget(editForm.password.first)}}
+            </div>
+            <div class="group">
+                {{form_widget(editForm.password.second)}}
+            </div>
+
+
+            <button class="btn btn-lg btn-primary" type="submit">Modify</button>
+            <button class="btn btn-lg btn-danger" type="reset">Cancel</button>
+
+            {{form_end(editForm)}}
+        </div>
+
+        <div class="errorform" style="text-align: left; color: #FF9205;font-weight: bold">
+            {{ form_errors(editForm.username) }}
+            {{ form_errors(editForm.lastName) }}
+            {{ form_errors(editForm.firstName) }}
+            {{ form_errors(editForm.email.first) }}
+            {{ form_errors(editForm.email.second) }}
+            {{ form_errors(editForm.password.first) }}
+            {{ form_errors(editForm.password.second) }}
+        </div>
+
+    </div>
+
+{%  endblock %}
+
+{% block title %}Register{% endblock %}

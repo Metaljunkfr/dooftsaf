@@ -1,0 +1,51 @@
+@charset "UTF-8";
+/*
+Projet travelagency
+GG
+Mise en page de la landing page
+Version 1.0
+Dernière maj 14/11/2020
+GG
+*/
+/*Abstracts*/
+/*Gestion couleurs*/
+/*Layouts*/
+html {
+    height: 100%;
+}
+html body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: lightgrey;
+}
+html body a:link, html body a :visited, html body a :hover, html body a :active {
+    text-decoration: none;
+}
+html body header {
+    margin-bottom: 30px;
+    padding: 10px;
+    height: 80px !important;
+}
+
+.flashdiv {
+    margin-top: 40px;
+    margin-bottom: 40px; }
+
+.flash {
+    padding: 20px;
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFF; }
+
+.flash-success {
+    background-color: #76A4D1; }
+
+.flash-error {
+    background-color: #FF9205; }
+
+.errorform ul>li{
+    list-style-type: none!important;
+}

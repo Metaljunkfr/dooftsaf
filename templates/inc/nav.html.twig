@@ -1,0 +1,48 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!--Logo-->
+        <a class="navbar-brand" href="{{ path ('home')}}">
+            <img src="{{ asset ('img/logo.png')}}" height="75" width="75" alt="Logo">
+        </a>
+        <!--Bouton menu lorsqu'écran plus petit qu'une certaine résolution-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--Menu / menu réduit-->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active ml-auto" >
+                    <a class="nav-link" href="{{path ('home')}}">Home</a>
+                </li>
+               
+                <li class="nav-item ml-auto">
+                    <a class="nav-link" href="{{path ('about')}}">About</a>
+                </li>
+            
+                <li class="nav-item ml-auto navcontact">
+                    <a class="nav-link" href="{{path ('contact')}}">Contact</a>
+                </li>
+            
+
+            {% if is_granted("ROLE_USER") %}
+                 <li class="nav-item ml-auto">
+                    <a href="{{ path('editprofile')}}" class="nav-link">Edit profile</a>
+                 </li>
+                 <li class="nav-item ml-auto">
+                    <a href="{{ path('logout')}}" class="nav-link">Logout</a>
+                 </li>
+            {% else %}
+                <li class="nav-item ml-auto">
+                    <a class="nav-link rejoignez" href="{{path ('register')}}">Register</a>
+                </li>
+                <li class="nav-item ml-auto" >
+                    <a class="nav-link dejainscrit" href="{{path ('login')}}">Login</a>
+                </li>
+            {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</nav>
+

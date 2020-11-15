@@ -1,24 +1,40 @@
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        users_in_memory: { memory: null }
+        our_db_provider:
+            entity:
+                class: App\Entity\User
+                property: username
     firewalls:
+        main:
+            pattern: ^/
+            #Récupération en base de données
+            provider: our_db_provider
+            anonymous: ~
+            form_login:
+                #Vérification et redirection
+                login_path: login
+                check_path: login
+            logout:
+                path: logout
+                target: home
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
-            anonymous: true
-            lazy: true
-            provider: users_in_memory
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
+    encoders:
+        #Hasher les mots de passe
+        App\Entity\User:
+            algorithm: bcrypt
 
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
+    role_hierarchy:
+        #Attribution de plusieurs rôles
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - {path: ^/admin/, roles: ROLE_ADMIN}
+        - { path: ^/editprofile, roles: ROLE_USER}

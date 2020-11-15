@@ -1,0 +1,43 @@
+{% extends 'base.html.twig'%}
+
+{% block main %}
+<div style="text-align:center">
+    <form action="{{ path('login') }}" method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.username }}, <a href="{{ path('logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <input type="text" value="{{ lastUsername }}" placeholder="Username" name="_username" id="inputUsername" class="form-control" required autofocus>
+        <input type="email" name="_email" id="email" placeholder="Email" required="true" class="form-control">
+        <input type="password" name="_password" id="inputPassword" placeholder="Password" class="form-control" required>
+        <div style="margin-left: 30px;">
+            <input type="checkbox" class="custom-control-input" id="remember_me" name="_remember_me" unchecked/>
+            <label class="labelform custom-control-label" for="remember_me">Remember me </label>
+        </div>
+        <br>
+
+        <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-danger" type="reset">Cancel</button>
+    </form>
+
+    <div class="errorform" style="text-align: left; color: #FF9205;font-weight: bold">
+        {% if error %}
+            <div><ul><li>{{ error.messageKey|trans(error.messageData, 'security') }}</li></ul></div>
+        {% endif %}
+    </div>
+
+
+    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <p>Click <a href="{{ path('register')}}" class="lien">here</a> to create an account.</p>
+    </div>
+</div>
+{%  endblock %}
+
+{% block title %}Login{% endblock %}
