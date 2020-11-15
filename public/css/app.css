@@ -23,6 +23,15 @@ html body {
 html body a:link, html body a :visited, html body a :hover, html body a :active {
     text-decoration: none;
 }
+
+a {
+    color: darkgrey;
+}
+
+a:hover, a:active{
+    color:lightgrey;
+}
+
 html body header {
     margin-bottom: 30px;
     padding: 10px;
@@ -48,4 +57,19 @@ html body header {
 
 .errorform ul>li{
     list-style-type: none!important;
+}
+
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #353B41;
+    color: white;
+    text-align: center;
+}
+
+header
+{
+    padding: 0;
 }
